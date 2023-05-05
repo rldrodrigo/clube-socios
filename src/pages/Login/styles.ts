@@ -32,7 +32,7 @@ export const LoginForm = styled.div`
         height: 36px;
         width: 60%;
         font-weight: bold;
-        background-color: #CCAACC;
+        background-color: #AAA;
         border: 0;
         border-radius: 12px;
     }

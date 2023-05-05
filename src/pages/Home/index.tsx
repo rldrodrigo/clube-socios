@@ -2,6 +2,8 @@ import { Login } from "../Login";
 
 export const Home = () => {
     return (
-        <Login></Login>
+        <div>
+            Teste Home
+        </div>
     );
 }

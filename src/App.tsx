@@ -30,6 +30,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/private" element={<RequireAuth><Private /></RequireAuth>} />
+        <Route path="/home" element={<RequireAuth><Home /></RequireAuth>} />
       </Routes>
     </div>
   );
