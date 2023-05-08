@@ -37,7 +37,7 @@ export const WelcomeContainer = styled.div`
     }
 `;
 
-export const LoginForm = styled.div`
+export const MainContent = styled.div`
     display: flex;
     flex-direction: column;
     padding: 50px;
@@ -48,46 +48,9 @@ export const LoginForm = styled.div`
     color: #7BADF7;
     justify-content: center;
 
-    button {
-        height: 36px;
-        width: 200px;
-        margin: 10px;
-        border: 0;
-        font-weight: bold;
-        background-color: #7BADF7;
-        color: white;
-        text-transform: uppercase;
-        border-radius: 12px;
-        text-align: center;
-    }
-
     @media (max-width: 900px) {
         width: 100vw;
     }
     
 `;
 
-export const InputArea = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    margin: 10px;
-    background-color: #EEE;
-    padding: 10px;
-
-    input {
-        margin-left: 10px;
-        height: 36px;
-        width: 400px;
-        text-align: left;
-        background-color: transparent;
-        border: none;
-        padding: 10px;
-    }
-
-    input:focus {
-        box-shadow: 0 0 0 0;
-        outline: 0;
-    }
-`;

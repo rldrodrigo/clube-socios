@@ -1,9 +1,17 @@
-import { Login } from "../Login";
+import { Container, Header } from "./styles";
 
 export const Home = () => {
     return (
-        <div>
-            Teste Home
-        </div>
+        <Container>
+            <Header>
+                Header
+            </Header>
+            <div>
+                menu lateral
+            </div>
+            <footer>
+                teste
+            </footer>
+        </Container>
     );
 }
