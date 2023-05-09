@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/clube-socios/static/css/main.04e46983.css",
-    "main.js": "/clube-socios/static/js/main.bf8f92f0.js",
+    "main.js": "/clube-socios/static/js/main.783bd3b8.js",
     "static/js/787.512eb057.chunk.js": "/clube-socios/static/js/787.512eb057.chunk.js",
     "static/media/404.svg": "/clube-socios/static/media/404.dafe04f3879100dd1f991b0402592971.svg",
     "index.html": "/clube-socios/index.html",
     "main.04e46983.css.map": "/clube-socios/static/css/main.04e46983.css.map",
-    "main.bf8f92f0.js.map": "/clube-socios/static/js/main.bf8f92f0.js.map",
+    "main.783bd3b8.js.map": "/clube-socios/static/js/main.783bd3b8.js.map",
     "787.512eb057.chunk.js.map": "/clube-socios/static/js/787.512eb057.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.04e46983.css",
-    "static/js/main.bf8f92f0.js"
+    "static/js/main.783bd3b8.js"
   ]
 }
