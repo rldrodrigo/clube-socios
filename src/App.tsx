@@ -30,6 +30,7 @@ function App() {
       </header> */}
       {/* <hr /> */}
       <Routes>
+        <Route path="/clube-socios" element={<Login />} />
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/private" element={<RequireAuth><Private /></RequireAuth>} />

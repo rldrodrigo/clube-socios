@@ -1,7 +1,7 @@
 {
   "name": "clube-socios",
   "version": "0.1.0",
-  "homepage": "clube-socios/",
+  "homepage": "/clube-socios",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
@@ -25,7 +25,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "npm run build",
+    "build": "react-scripts build",
     "deploy": "gh-pages -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
