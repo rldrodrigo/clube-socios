@@ -92,8 +92,8 @@ export const MainContent = styled.div`
 
 export const Menu = styled.div`
     background-color: #7BADF7;
-    min-width: 200px;
-    width: 20vw;
+    min-width: 150px;
+    width: 200px;
     height: calc(100vh - 60px);
     //position: fixed;
 

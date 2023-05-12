@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/Auth/AuthContext";
 import { Container, InputArea, LoginForm, WelcomeContainer } from "./styles";
 import { FaLock, FaUser } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 export const Login = () => {
     const auth = useContext(AuthContext);
@@ -29,6 +30,8 @@ export const Login = () => {
             //     alert("Não foi possível entrar no sistema");
             // }
             navigate('/home');
+        } else {
+            toast.warn("Não foi possível fazer login");
         }
     }
 
@@ -46,25 +49,29 @@ export const Login = () => {
             </WelcomeContainer>
             <LoginForm>
                 <h2>Entrar no sistema</h2>
-                <InputArea>
-                    <FaUser style={{ color: '#CCC' }} />
-                    <input
-                        type="text"
-                        value={email}
-                        placeholder="E-mail"
-                        onChange={handleEmailInput}
-                    />
-                </InputArea>
-                <InputArea>
-                    <FaLock style={{ color: '#CCC' }} />
-                    <input
-                        type="password"
-                        value={password}
-                        placeholder="Senha"
-                        onChange={handlePasswordInput}
-                    />
-                </InputArea>
-                <button onClick={handleLogin}>Entrar</button>
+                <form>
+                    <InputArea>
+                        <FaUser style={{ color: '#CCC' }} />
+                        <input
+                            type="email"
+                            value={email}
+                            placeholder="E-mail"
+                            onChange={handleEmailInput}
+                            required
+                        />
+                    </InputArea>
+                    <InputArea>
+                        <FaLock style={{ color: '#CCC' }} />
+                        <input
+                            type="password"
+                            value={password}
+                            placeholder="Senha"
+                            onChange={handlePasswordInput}
+                            required
+                        />
+                    </InputArea>
+                    <button onClick={handleLogin}>Entrar</button>
+                </form>
             </LoginForm>
         </Container>
     )

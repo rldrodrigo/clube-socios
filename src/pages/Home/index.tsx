@@ -1,7 +1,8 @@
-import { FaAddressCard, FaCube, FaHome, FaLock, FaRegChartBar, FaUser, FaUserCircle, FaUserEdit, FaUserFriends } from "react-icons/fa";
+import { FaAddressCard, FaCube, FaHome, FaLock, FaRegChartBar, FaSignOutAlt, FaUser, FaUserCircle, FaUserEdit, FaUserFriends } from "react-icons/fa";
 import { Container, Content, Header, MainContent, Menu, MenuUser } from "./styles";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export const Home = () => {
     
@@ -13,6 +14,7 @@ export const Home = () => {
 
     const handleClickExit = () => {
         navigate('/');
+        toast.success('Usuário deslogado com sucesso!')
     }
 
     const nomesMockados = [
@@ -51,8 +53,8 @@ export const Home = () => {
                 {menuUser && (<MenuUser>
                     <ul>
                         <li>Configurações</li>
-                        <li>
-                            <button onClick={handleClickExit}>Sair</button>
+                        <li onClick={handleClickExit}>
+                            Sair
                         </li>
                     </ul>
                 </MenuUser>)}

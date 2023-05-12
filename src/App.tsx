@@ -8,6 +8,8 @@ import { AuthContext } from './contexts/Auth/AuthContext';
 import { Login } from './pages/Login';
 import { SignUp } from './pages/SignUp';
 import { PageNotFound } from './pages/PageNotFound';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const auth = useContext(AuthContext);
@@ -38,6 +40,18 @@ function App() {
         <Route path="/notFound" element={<PageNotFound />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        />
     </div>
   );
 }

@@ -85,7 +85,7 @@ export const InputArea = styled.div`
         border: none;
         padding: 10px;
     }
-
+    
     input:focus {
         box-shadow: 0 0 0 0;
         outline: 0;
