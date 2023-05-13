@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/clube-socios/static/css/main.f6e822d7.css",
-    "main.js": "/clube-socios/static/js/main.bcb6c79e.js",
+    "main.css": "/clube-socios/static/css/main.8053708f.css",
+    "main.js": "/clube-socios/static/js/main.f9c055cb.js",
     "static/js/787.512eb057.chunk.js": "/clube-socios/static/js/787.512eb057.chunk.js",
     "static/media/404.svg": "/clube-socios/static/media/404.dafe04f3879100dd1f991b0402592971.svg",
     "index.html": "/clube-socios/index.html",
-    "main.f6e822d7.css.map": "/clube-socios/static/css/main.f6e822d7.css.map",
-    "main.bcb6c79e.js.map": "/clube-socios/static/js/main.bcb6c79e.js.map",
+    "main.8053708f.css.map": "/clube-socios/static/css/main.8053708f.css.map",
+    "main.f9c055cb.js.map": "/clube-socios/static/js/main.f9c055cb.js.map",
     "787.512eb057.chunk.js.map": "/clube-socios/static/js/787.512eb057.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f6e822d7.css",
-    "static/js/main.bcb6c79e.js"
+    "static/css/main.8053708f.css",
+    "static/js/main.f9c055cb.js"
   ]
 }
