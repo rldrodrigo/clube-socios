@@ -31,7 +31,7 @@ export const Login = () => {
             // }
             navigate('/home');
         } else {
-            toast.warn("Não foi possível fazer login");
+            toast.error("Não foi possível fazer login");
         }
     }
 

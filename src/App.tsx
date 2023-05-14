@@ -10,6 +10,8 @@ import { SignUp } from './pages/SignUp';
 import { PageNotFound } from './pages/PageNotFound';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { QueryClientProvider } from 'react-query';
+import { queryClient } from './services/queryClient';
 
 function App() {
   const auth = useContext(AuthContext);
@@ -21,38 +23,40 @@ function App() {
   }
 
   return (
-    <div className="App">
-      {/* <header>
-        <h1>Sistema Gerenciador de Sócios para Clubes</h1>
-        <nav>
-          <Link to="/"> Home </Link>
-          <Link to="/private"> Página Privada </Link>
-          {auth.user && <button type="button" onClick={handleLogout}> Sair</button> }
-        </nav>
-      </header> */}
-      {/* <hr /> */}
-      <Routes>
-        <Route path="/clube-socios" element={<Login />} />
-        <Route path="/" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/private" element={<RequireAuth><Private /></RequireAuth>} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/notFound" element={<PageNotFound />} />
-        <Route path="*" element={<PageNotFound />} />
-      </Routes>
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-        />
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <div className="App">
+        {/* <header>
+          <h1>Sistema Gerenciador de Sócios para Clubes</h1>
+          <nav>
+            <Link to="/"> Home </Link>
+            <Link to="/private"> Página Privada </Link>
+            {auth.user && <button type="button" onClick={handleLogout}> Sair</button> }
+          </nav>
+        </header> */}
+        {/* <hr /> */}
+        <Routes>
+          <Route path="/clube-socios" element={<Login />} />
+          <Route path="/" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/private" element={<RequireAuth><Private /></RequireAuth>} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/notFound" element={<PageNotFound />} />
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+          />
+      </div>
+    </QueryClientProvider>
   );
 }
 

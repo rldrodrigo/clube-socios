@@ -20,7 +20,7 @@ export const WelcomeContainer = styled.div`
     justify-content: center;
     
     color: white;
-    background-color: #317FF5;
+    background-color: #1C1C1C;
 
     button {
         background-color: transparent;
@@ -45,7 +45,7 @@ export const LoginForm = styled.div`
     width: 60vw;
     height: 100vh;
     align-items: center;
-    color: #7BADF7;
+    color: #1C1C1C;
     justify-content: center;
 
     button {
@@ -54,7 +54,7 @@ export const LoginForm = styled.div`
         margin: 10px;
         border: 0;
         font-weight: bold;
-        background-color: #7BADF7;
+        background-color: #1C1C1C;
         color: white;
         text-transform: uppercase;
         border-radius: 12px;
