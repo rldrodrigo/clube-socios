@@ -11,10 +11,7 @@ export const Home = () => {
             <Header />
             <Content>
                 <MenuLateral />
-                <Routes>
-                    <Route path="/" element={<Socios />} />
-                    <Route path="/teste/socios" element={<Socios />} />
-                </Routes>
+                <Socios />
             </Content>
         </Container>
     );

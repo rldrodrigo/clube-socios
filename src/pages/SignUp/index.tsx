@@ -28,12 +28,10 @@ export const SignUp = () => {
         if (email && password) {
             // const isLogged = await auth.signup(email, password);
             // if (isLogged) {
-            //     console.log('entrou aqui')
             //     navigate('/');
             // } else {
             //     alert("Não foi possível entrar no sistema");
             // }
-            console.log(email, name, password);
         }
     }
 

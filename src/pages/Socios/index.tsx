@@ -1,92 +1,25 @@
-import { Container, CreateButton, TitleArea } from "./styles";
-import { useSocios } from "../../hooks/useSocios";
-import { FaUserEdit } from "react-icons/fa";
-import { Skeleton } from "@mui/material";
+import { Container } from "./styles";
+import { useState } from "react";
+import { SpinnerLoading } from "../../components/SpinnerLoading";
+import { TableSocios } from "./TableSocios";
+import { EditarSocio } from "./EditarSocio";
 
 
 export const Socios = () => {
-    const nomesMockados = [   
-        {
-            name: 'Nome teste',
-            document: '000.000.000-22',
-            status: 'Ativo'
-        },
-        {
-            name: 'Nome teste',
-            document: '000.000.000-22',
-            status: 'Ativo'
-        },
-        {
-            name: 'Nome teste',
-            document: '000.000.000-22',
-            status: 'Ativo'
-        },
-        {
-            name: 'Nome teste',
-            document: '000.000.000-22',
-            status: 'Ativo'
-        },
-        {
-            name: 'Nome teste',
-            document: '000.000.000-22',
-            status: 'Ativo'
-        },
-    ];
 
-    const { data: sociosList, isFetching: isSociosListFetching, } = useSocios({});
-      
+    const [loading, setLoading] = useState(false);
+
+    const [socioEditar, setSocioEditar] = useState(undefined);
+
     return (
         <Container>
-            <TitleArea>
-                <h2>Listagem de Sócios</h2>
-                <CreateButton type="button">Cadastrar Sócio</CreateButton>
-            </TitleArea>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Documento</th>
-                        <th>Status</th>
-                        <th>Vencimento do Pagamento</th>
-                        <th>Ação</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    { !isSociosListFetching ? nomesMockados.map(item => (
-                        <tr>
-                            <td>{item.name}</td>
-                            <td>{item.document}</td>
-                            <td>{item.status}</td>
-                            <td>{0}</td>
-                            <td><button type="button"><FaUserEdit /></button></td>
-                        </tr>
-                    )): (
-                        <>
-                            <tr>
-                                <td><Skeleton style={{ margin: '5px' }}/></td>
-                                <td><Skeleton style={{ margin: '5px' }}/></td>
-                                <td><Skeleton style={{ margin: '5px' }}/></td>
-                                <td><Skeleton style={{ margin: '5px' }}/></td>
-                                <td><Skeleton style={{ margin: '5px' }}/></td>
-                            </tr>
-                            <tr>
-                                <td><Skeleton style={{ margin: '5px' }}/></td>
-                                <td><Skeleton style={{ margin: '5px' }}/></td>
-                                <td><Skeleton style={{ margin: '5px' }}/></td>
-                                <td><Skeleton style={{ margin: '5px' }}/></td>
-                                <td><Skeleton style={{ margin: '5px' }}/></td>
-                            </tr>
-                            <tr>
-                                <td><Skeleton style={{ margin: '5px' }}/></td>
-                                <td><Skeleton style={{ margin: '5px' }}/></td>
-                                <td><Skeleton style={{ margin: '5px' }}/></td>
-                                <td><Skeleton style={{ margin: '5px' }}/></td>
-                                <td><Skeleton style={{ margin: '5px' }}/></td>
-                            </tr>
-                        </>
-                    )}
-                </tbody>
-            </table>
+            { socioEditar ?  (
+                <EditarSocio socio={socioEditar} setLoading={setLoading} setSocioEditar={setSocioEditar} />
+            ) : (
+                <TableSocios setLoading={setLoading} setSocioEditar={setSocioEditar} />
+            )}
+            
+            { loading && <SpinnerLoading />}
         </Container>
     );
 }

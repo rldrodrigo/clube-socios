@@ -11,6 +11,7 @@ export const Login = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [logando, setLogando] = useState(false);
 
     const handleEmailInput = (e: ChangeEvent<HTMLInputElement>) => {
         setEmail(e.target.value);
@@ -21,17 +22,18 @@ export const Login = () => {
     }
 
     const handleLogin = async () => {
+        setLogando(true);
         if (email && password) {
-            // const isLogged = await auth.signin(email, password);
-            // if (isLogged) {
-            //     console.log('entrou aqui')
-            //     navigate('/');
-            // } else {
-            //     alert("Não foi possível entrar no sistema");
-            // }
-            navigate('/home');
+            const isLogged = await auth.signin(email, password);
+            if (isLogged) {
+                toast.success("Bem Vindo!");
+                setLogando(false);
+                navigate('/home');
+            } else {
+                setLogando(false);
+            }
         } else {
-            toast.error("Não foi possível fazer login");
+            setLogando(false);
         }
     }
 
@@ -49,11 +51,10 @@ export const Login = () => {
             </WelcomeContainer>
             <LoginForm>
                 <h2>Entrar no sistema</h2>
-                <form>
                     <InputArea>
                         <FaUser style={{ color: '#CCC' }} />
                         <input
-                            type="email"
+                            type="text"
                             value={email}
                             placeholder="E-mail"
                             onChange={handleEmailInput}
@@ -70,8 +71,7 @@ export const Login = () => {
                             required
                         />
                     </InputArea>
-                    <button onClick={handleLogin}>Entrar</button>
-                </form>
+                    <button onClick={handleLogin}>  { logando ? 'Carregando...' : 'Entrar' }</button>
             </LoginForm>
         </Container>
     )

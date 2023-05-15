@@ -39,7 +39,7 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/private" element={<RequireAuth><Private /></RequireAuth>} />
-          <Route path="/home" element={<Home />} />
+          <Route path="/home" element={<RequireAuth><Home /></RequireAuth>} />
           <Route path="/notFound" element={<PageNotFound />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>

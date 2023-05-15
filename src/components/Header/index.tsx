@@ -15,7 +15,7 @@ export const Header = () => {
 
     const handleClickExit = () => {
         navigate('/');
-        toast.success('Usuário deslogado com sucesso!')
+        toast.success('Usuário deslogado com sucesso!');
     }
       
     return (
