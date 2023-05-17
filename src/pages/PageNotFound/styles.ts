@@ -20,7 +20,7 @@ export const WelcomeContainer = styled.div`
     justify-content: center;
     
     color: white;
-    background-color: #317FF5;
+    background-color: #1c1c1c;
 
     button {
         background-color: transparent;
@@ -45,7 +45,7 @@ export const MainContent = styled.div`
     width: 60vw;
     height: 100vh;
     align-items: center;
-    color: #7BADF7;
+    color: #1c1c1c;
     justify-content: center;
 
     @media (max-width: 900px) {

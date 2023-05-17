@@ -2,7 +2,7 @@ import { Switch } from "@mui/material";
 import formatCpfCnpj from "../../../utils/formatCpfCnpj";
 import { SocioRow } from "./styles";
 import formatCurrencyValue from "../../../utils/formatCurrencyValue";
-import { FaUserEdit } from "react-icons/fa";
+import { FaPlus, FaUserEdit } from "react-icons/fa";
 import { toast } from "react-toastify";
 import api from "../../../services/api";
 import { useCallback, useState } from "react";
@@ -47,12 +47,9 @@ export const Socio: React.FC<SocioProps> = ({ socio, setLoading, setSocioEditar 
     return (
        <SocioRow>
             <td>{socio.cliente.nome}</td>
-            <td>{formatCpfCnpj(socio.cliente.documento)}</td>
-            <td>{socio.plano.nome}</td>
-            <td>{formatCurrencyValue(socio.plano.valorMensalidade)}</td>
+            <td> <strong>•</strong>Em dia</td>
             <td><Switch color="success" className="switch" checked={ status } onChange={handleChange} /></td>
-            <td>{`${ socio.endereco.rua } ${socio.endereco.numero}, ${socio.endereco.bairro}, ${socio.endereco.cidade} `}</td>
-            <td><button type="button" onClick={handleClickEditar}><FaUserEdit style={{ fontSize: '30px'}}/></button></td>
+            <td><button type="button" onClick={handleClickEditar}><FaPlus style={{ fontSize: '15px'}}/></button></td>
        </SocioRow>
     );
 }

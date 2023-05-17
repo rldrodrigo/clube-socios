@@ -3,6 +3,7 @@ import { Container, CreateButton, TitleArea } from "./styles";
 import { SpinnerLoading } from "../../../components/SpinnerLoading";
 import { useSocios } from "../../../hooks/useSocios";
 import { Socio } from "../Socio";
+import { LoadingTable } from "../../../components/LoadingTable";
 
 interface TableSociosProps {
     setLoading: (value: boolean) => void;
@@ -23,43 +24,16 @@ export const TableSocios: React.FC<TableSociosProps> = ({ setLoading, setSocioEd
                 <thead>
                     <tr>
                         <th>Nome</th>
-                        <th>Documento</th>
-                        <th>Plano</th>
-                        <th>Valor Mensalidade</th>
+                        <th>Estado</th>
                         <th>Inativo/Ativo</th>
-                        <th>Endereço</th>
-                        <th>Ação</th>
+                        <th>Detalhes</th>
                     </tr>
                 </thead>
                 <tbody>
                     { !isSociosListFetching && sociosList ? sociosList.map(item => (
                         <Socio setLoading={setLoading} setSocioEditar={setSocioEditar} socio={item} key={item.id} />
                     )): (
-                        <>
-                            <tr>
-                                <td><Skeleton style={{ margin: '5px' }}/></td>
-                                <td><Skeleton style={{ margin: '5px' }}/></td>
-                                <td><Skeleton style={{ margin: '5px' }}/></td>
-                                <td><Skeleton style={{ margin: '5px' }}/></td>
-                                <td><Skeleton style={{ margin: '5px' }}/></td>
-                                <td><Skeleton style={{ margin: '5px' }}/></td>
-                                <td><Skeleton style={{ margin: '5px' }}/></td>
-                            </tr>
-                            <tr>
-                                <td><Skeleton style={{ margin: '5px' }}/></td>
-                                <td><Skeleton style={{ margin: '5px' }}/></td>
-                                <td><Skeleton style={{ margin: '5px' }}/></td>
-                                <td><Skeleton style={{ margin: '5px' }}/></td>
-                                <td><Skeleton style={{ margin: '5px' }}/></td>
-                            </tr>
-                            <tr>
-                                <td><Skeleton style={{ margin: '5px' }}/></td>
-                                <td><Skeleton style={{ margin: '5px' }}/></td>
-                                <td><Skeleton style={{ margin: '5px' }}/></td>
-                                <td><Skeleton style={{ margin: '5px' }}/></td>
-                                <td><Skeleton style={{ margin: '5px' }}/></td>
-                            </tr>
-                        </>
+                        <LoadingTable numeroLinhas={7} numeroColunas={4} />
                     )}
                 </tbody>
             </table>

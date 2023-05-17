@@ -3,24 +3,24 @@ import { User } from "../../types/User";
 import { AuthContext } from "./AuthContext";
 import { useApi } from "../../hooks/useApi";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export const AuthProvider = ({ children }: { children: JSX.Element }) => {
     const [user, setUser] = useState<User | null>(null);
     const [token, setToken] = useState<string | null>(null);
     const api = useApi();
 
-    // useEffect(() => {
-    //   const validateToken = async () => {
-    //     const storageData = sessionStorage.getItem('authToken');
-    //     if (storageData) {
-    //         const data = await api.validateToken(storageData);
-    //         if (data.user) {
-    //             setUser(data.user);
-    //         } 
-    //     }
-    //   }
-    //   validateToken();
-    // }, [api])
+
+    useEffect(() => {
+      const validateToken = async () => {
+        const storageData = sessionStorage.getItem('authToken');
+        if (storageData) {
+            // const data = await api.validateToken(storageData);
+            //setToken(storageData);
+        }
+      }
+      validateToken();
+    }, [api]);
     
 
     const signin = async (email: string, password: string) => {

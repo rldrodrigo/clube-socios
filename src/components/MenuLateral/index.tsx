@@ -1,5 +1,5 @@
 import { Container } from "./styles";
-import { FaAddressCard, FaRegChartBar, FaUserFriends } from "react-icons/fa";
+import { FaAddressCard, FaRegChartBar, FaUserFriends, FaUserTie } from "react-icons/fa";
 
 
 export const MenuLateral = () => {
@@ -19,6 +19,12 @@ export const MenuLateral = () => {
                     <FaAddressCard /> 
                     <span>Planos</span>
                 </li>
+                <li>
+                    <FaUserTie /> 
+                    <span>Papéis</span>
+                </li>
+
+                
             </ul>
         </Container>
     );

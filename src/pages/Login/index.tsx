@@ -28,6 +28,7 @@ export const Login = () => {
             if (isLogged) {
                 toast.success("Bem Vindo!");
                 setLogando(false);
+                sessionStorage.setItem('login', email);
                 navigate('/home');
             } else {
                 setLogando(false);
