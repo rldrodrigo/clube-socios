@@ -1,6 +1,4 @@
-import { Skeleton } from "@mui/material";
 import { Container, CreateButton, TitleArea } from "./styles";
-import { SpinnerLoading } from "../../../components/SpinnerLoading";
 import { useSocios } from "../../../hooks/useSocios";
 import { Socio } from "../Socio";
 import { LoadingTable } from "../../../components/LoadingTable";

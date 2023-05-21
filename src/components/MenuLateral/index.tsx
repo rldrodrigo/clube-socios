@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import { Container } from "./styles";
 import { FaAddressCard, FaRegChartBar, FaUserFriends, FaUserTie } from "react-icons/fa";
 
@@ -7,23 +8,41 @@ export const MenuLateral = () => {
     return (
         <Container>
             <ul>
-                <li>
+                <NavLink
+                    className="navbar-item"
+                    to="/home/dashboard"
+                >
                     <FaRegChartBar />
                     <span>Dashboard</span>
-                </li>
-                <li>
+                </NavLink>
+                <NavLink
+                    className="navbar-item"
+                    to="/home/socios"
+                >
                     <FaUserFriends />
                     <span>Sócios</span>
-                </li>
-                <li>
+                </NavLink>
+                <NavLink
+                    className="navbar-item"
+                    to="/home/planos"
+                >
                     <FaAddressCard /> 
                     <span>Planos</span>
-                </li>
-                <li>
+                </NavLink>
+                <NavLink
+                    className="navbar-item"
+                    to="/home/papeis"
+                >
                     <FaUserTie /> 
                     <span>Papéis</span>
-                </li>
-
+                </NavLink>
+                <NavLink
+                    className="navbar-item"
+                    to="/home/dependentes"
+                >
+                    <FaUserFriends /> 
+                    <span>Dependentes</span>
+                </NavLink>
                 
             </ul>
         </Container>

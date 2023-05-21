@@ -30,6 +30,8 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
                 // setUser(data.user);
                 setToken(data.dados);
                 setTokenLocalStorage(data.dados);
+                toast.success("Bem Vindo!");
+                sessionStorage.setItem('login', email);
                 return true;
             }
         } catch (err: any) {

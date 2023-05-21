@@ -6,6 +6,7 @@ import { Switch } from "@mui/material";
 import { InputSelect } from "../../../components/InputSelect";
 import api from "../../../services/api";
 import { toast } from "react-toastify";
+import formatCpfCnpj from "../../../utils/formatCpfCnpj";
 
 
 interface EditarSocioProps {
@@ -31,6 +32,7 @@ export const EditarSocio: React.FC<EditarSocioProps> = ({ socio, setLoading, set
     const [bairro, setBairro] = useState('');
     const [rua, setRua] = useState('');
     const [numero, setNumero] = useState('');
+    const [login, setLogin] = useState('');
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setAtivo(!ativo);
@@ -52,8 +54,8 @@ export const EditarSocio: React.FC<EditarSocioProps> = ({ socio, setLoading, set
                     nomePlano: plano ? plano : socio.plano.nome,
                     cliente: {
                         nome: nome ? nome : socio.cliente.nome,
-                        documento: documento ? documento : socio.cliente.documento,
-                        login: "",
+                        documento: documento ? documento.replace('.', '').replace('-','') : socio.cliente.documento,
+                        login: login ? login : socio.cliente.login,
                         email: email ? email : socio.cliente.email
                     },
                     endereco: {
@@ -62,7 +64,7 @@ export const EditarSocio: React.FC<EditarSocioProps> = ({ socio, setLoading, set
                         cep: cep ? cep : socio.endereco.cep,
                         bairro: bairro ? bairro : socio.endereco.bairro,
                         rua: rua ? rua : socio.endereco.rua,
-                        numero: numero ? numero : socio.endereco.numero,
+                        numero: numero ? parseInt(numero, 10) : parseInt(socio.endereco.numero, 10),
                     }
                 },
             );
@@ -90,6 +92,7 @@ export const EditarSocio: React.FC<EditarSocioProps> = ({ socio, setLoading, set
         rua,
         numero,
         contato,
+        login,
     ]);
 
     return (
@@ -103,7 +106,7 @@ export const EditarSocio: React.FC<EditarSocioProps> = ({ socio, setLoading, set
                     <h2>Dados Pessoais</h2>
                     <RowForm>
                         <InputText label={"Nome"} placeholder={socio.cliente.nome} value={nome} onChange={(e)=> setNome(e.target.value)}/>
-                        <InputText label={"Contato"} placeholder={socio.cliente.contato} value={contato} onChange={(e)=> setContato(e.target.value)}/>
+                        <InputText label={"Contato"} placeholder={socio.contato} value={contato} onChange={(e)=> setContato(e.target.value)}/>
                     </RowForm>
                     <RowForm>
                         <InputText label={"Apelido"} placeholder={socio.apelido} value={apelido} onChange={(e)=> setApelido(e.target.value)}/>
@@ -121,7 +124,8 @@ export const EditarSocio: React.FC<EditarSocioProps> = ({ socio, setLoading, set
                     </RowForm>
                     <RowForm>
                         <InputText label={"E-mail"} placeholder={socio.cliente.email} value={email} onChange={(e)=> setEmail(e.target.value)}/>
-                        <InputText label={"CPF"} placeholder={socio.cliente.documento} value={documento} onChange={(e)=> setDocumento(e.target.value)}/>
+                        <InputText label={"CPF"} placeholder={formatCpfCnpj(socio.cliente.documento)} value={formatCpfCnpj(documento)} onChange={(e)=> setDocumento(e.target.value)}/>
+                        <InputText label={"Login"} placeholder={socio.cliente.login} value={login} onChange={(e)=> setLogin(e.target.value)}/>
                     </RowForm>
                 </DadosPessoaisArea>
                 <PlanoArea>

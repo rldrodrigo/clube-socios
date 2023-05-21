@@ -7,7 +7,7 @@ export const PageNotFound = () => {
     const navigate = useNavigate();
 
     const handleNavigateToHome = async () => {
-        navigate('/');
+        navigate('/home');
       }
 
       

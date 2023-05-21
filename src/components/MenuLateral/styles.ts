@@ -28,5 +28,25 @@ export const Container = styled.div`
                 background-color: rgba(0,0,0,.2);
             }
         }
+
+        .navbar-item {
+            padding: 16px;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            vertical-align: middle;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+
+            span {
+                margin-left: 16px;
+            }
+
+            :hover {
+                background-color: rgba(0,0,0,.2);
+            }
+        }
     }
 `;

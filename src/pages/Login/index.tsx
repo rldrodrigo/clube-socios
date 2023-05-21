@@ -26,9 +26,7 @@ export const Login = () => {
         if (email && password) {
             const isLogged = await auth.signin(email, password);
             if (isLogged) {
-                toast.success("Bem Vindo!");
                 setLogando(false);
-                sessionStorage.setItem('login', email);
                 navigate('/home');
             } else {
                 setLogando(false);

@@ -1,7 +1,5 @@
 import { Switch } from "@mui/material";
-import formatCpfCnpj from "../../../utils/formatCpfCnpj";
 import { SocioRow } from "./styles";
-import formatCurrencyValue from "../../../utils/formatCurrencyValue";
 import { FaPlus, FaUserEdit } from "react-icons/fa";
 import { toast } from "react-toastify";
 import api from "../../../services/api";
@@ -49,7 +47,7 @@ export const Socio: React.FC<SocioProps> = ({ socio, setLoading, setSocioEditar 
             <td>{socio.cliente.nome}</td>
             <td> <strong>•</strong>Em dia</td>
             <td><Switch color="success" className="switch" checked={ status } onChange={handleChange} /></td>
-            <td><button type="button" onClick={handleClickEditar}><FaPlus style={{ fontSize: '15px'}}/></button></td>
+            <td><button type="button" onClick={handleClickEditar}><FaUserEdit style={{ fontSize: '32px'}}/></button></td>
        </SocioRow>
     );
 }
