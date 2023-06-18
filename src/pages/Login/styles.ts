@@ -51,6 +51,7 @@ export const LoginForm = styled.div`
     button {
         height: 36px;
         width: 200px;
+        min-height: 36px;
         margin: 10px;
         border: 0;
         font-weight: bold;

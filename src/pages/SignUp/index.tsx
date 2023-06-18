@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/Auth/AuthContext";
 import { FaLock, FaUser, FaRegEnvelope, FaUserCircle, FaAddressCard } from "react-icons/fa";
 import { Container, InputArea, LoginForm, WelcomeContainer } from "../Login/styles";
+import { toast } from "react-toastify";
 
 export const SignUp = () => {
     const auth = useContext(AuthContext);
@@ -35,13 +36,13 @@ export const SignUp = () => {
     }
 
     const handleSignup = async () => {
-        if (email && password && login && documento) {
-            // const isLogged = await auth.signup(email, password);
-            // if (isLogged) {
-            //     navigate('/');
-            // } else {
-            //     alert("Não foi possível entrar no sistema");
-            // }
+        if (email && password && login && documento && name) {
+            const isLogged = await auth.signup(name, email, documento, login, password);
+            if (isLogged) {
+                navigate('/');
+            } else {
+                toast.warn("Não foi possível entrar no sistema");
+            }
         }
     }
 

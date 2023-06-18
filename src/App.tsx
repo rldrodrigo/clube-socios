@@ -10,6 +10,8 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { QueryClientProvider } from 'react-query';
 import { queryClient } from './services/queryClient';
+import { Socios } from './pages/Socios';
+import { Papeis } from './pages/Papeis';
 
 function App() {
   return (
@@ -20,7 +22,10 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/private" element={<RequireAuth><Private /></RequireAuth>} />
-          <Route path="/home" element={<RequireAuth><Home /></RequireAuth>} />
+          <Route path="/home" element={<RequireAuth><Home><Socios /></Home></RequireAuth>} />
+          <Route path="/home/socios" element={<RequireAuth><Home><Socios /></Home></RequireAuth>} />
+          <Route path="/home/planos" element={<RequireAuth><Home><Socios /></Home></RequireAuth>} />
+          <Route path="/home/papeis" element={<RequireAuth><Home><Papeis /></Home></RequireAuth>} />
           <Route path="/notFound" element={<PageNotFound />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>

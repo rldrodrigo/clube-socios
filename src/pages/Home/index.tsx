@@ -5,13 +5,13 @@ import { MenuLateral } from "../../components/MenuLateral";
 import { Route, Routes } from "react-router-dom";
 import { Socios } from "../Socios";
 
-export const Home = () => {
+export const Home = ({ children }: { children: JSX.Element}) => {
     return (
         <Container>
             <Header />
             <Content>
                 <MenuLateral />
-                <Socios />
+                {children}
             </Content>
         </Container>
     );

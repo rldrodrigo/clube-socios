@@ -13,6 +13,22 @@ export const useApi = () => ({
         const { data } = await api.post('/colaboradores/login', { login: email, senha: password });
         return data;
     },
+    signup: async (name: string, email: string, documento: string, login: string, password: string) => {
+        const { data } = await api.post('/colaboradores/', 
+        { 
+            cliente: {
+                nome: name,
+                email,
+                documento,
+                login,
+                senha: password,
+            },
+            papel: {
+                nome: "Administrador"
+            }
+        });
+        return data;
+    },
     logout: async () => {
         const {data} = await api.post('/colaboradores/login');
         return data;

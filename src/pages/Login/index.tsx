@@ -4,6 +4,7 @@ import { AuthContext } from "../../contexts/Auth/AuthContext";
 import { Container, InputArea, LoginForm, WelcomeContainer } from "./styles";
 import { FaLock, FaUser } from "react-icons/fa";
 import { toast } from "react-toastify";
+import { SpinnerLoading } from "../../components/SpinnerLoading";
 
 export const Login = () => {
     const auth = useContext(AuthContext);
@@ -24,11 +25,16 @@ export const Login = () => {
     const handleLogin = async () => {
         setLogando(true);
         if (email && password) {
-            const isLogged = await auth.signin(email, password);
-            if (isLogged) {
-                setLogando(false);
-                navigate('/home');
-            } else {
+            try {
+                const isLogged =  await auth.signin(email, password);
+                if (isLogged) {
+                    setLogando(false);
+                    navigate('/home');
+                } else {
+                    setLogando(false);
+                }
+            } catch {
+                toast.warn('Não foi possível fazer login');
                 setLogando(false);
             }
         } else {
@@ -41,37 +47,40 @@ export const Login = () => {
     }
 
     return (
-        <Container>
-            <WelcomeContainer>
-                <h2> Seja bem vindo! </h2>
-                <p> Para acessar o sistema é necessário possuir uma conta.</p>
-                <h3> Não possui uma conta?</h3>
-                <button type="button" onClick={handleSignup}>Cadastrar</button>
-            </WelcomeContainer>
-            <LoginForm>
-                <h2>Entrar no sistema</h2>
-                    <InputArea>
-                        <FaUser style={{ color: '#CCC' }} />
-                        <input
-                            type="text"
-                            value={email}
-                            placeholder="E-mail"
-                            onChange={handleEmailInput}
-                            required
-                        />
-                    </InputArea>
-                    <InputArea>
-                        <FaLock style={{ color: '#CCC' }} />
-                        <input
-                            type="password"
-                            value={password}
-                            placeholder="Senha"
-                            onChange={handlePasswordInput}
-                            required
-                        />
-                    </InputArea>
-                    <button onClick={handleLogin}>  { logando ? 'Carregando...' : 'Entrar' }</button>
-            </LoginForm>
-        </Container>
+        <>
+            <Container>
+                <WelcomeContainer>
+                    <h2> Seja bem vindo! </h2>
+                    <p> Para acessar o sistema é necessário possuir uma conta.</p>
+                    <h3> Não possui uma conta?</h3>
+                    <button type="button" onClick={handleSignup}>Cadastrar</button>
+                </WelcomeContainer>
+                <LoginForm>
+                    <h2>Entrar no sistema</h2>
+                        <InputArea>
+                            <FaUser style={{ color: '#CCC' }} />
+                            <input
+                                type="text"
+                                value={email}
+                                placeholder="Login"
+                                onChange={handleEmailInput}
+                                required
+                            />
+                        </InputArea>
+                        <InputArea>
+                            <FaLock style={{ color: '#CCC' }} />
+                            <input
+                                type="password"
+                                value={password}
+                                placeholder="Senha"
+                                onChange={handlePasswordInput}
+                                required
+                            />
+                        </InputArea>
+                        <button onClick={handleLogin}>  { logando ? 'Carregando...' : 'Entrar' }</button>
+                </LoginForm>
+            </Container>
+            { logando && <SpinnerLoading />}
+        </>
     )
 }

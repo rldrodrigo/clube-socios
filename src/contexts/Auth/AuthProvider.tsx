@@ -40,6 +40,23 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
         return false;
     }
 
+    const signup = async (name: string, email: string, documento: string,   login: string, password: string) => {
+        try {
+            const data = await api.signup(name, email, documento, login, password);
+            if (data.dados) {
+                // setUser(data.user);
+                setToken(data.dados);
+                setTokenLocalStorage(data.dados);
+                toast.success("Usuário Cadastrado com sucesso");
+                sessionStorage.setItem('login', email);
+                return true;
+            }
+        } catch (err: any) {
+            toast.error(err.response.data.erros[0]);
+          }
+        return false;
+    }
+
     const signout = async () => {
         await api.logout();
         setUser(null);
@@ -52,7 +69,7 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
     }
 
     return (
-        <AuthContext.Provider value={{ token, signin, signout }}>
+        <AuthContext.Provider value={{ token, signin, signout, signup }}>
             {children}
         </AuthContext.Provider>
     );
