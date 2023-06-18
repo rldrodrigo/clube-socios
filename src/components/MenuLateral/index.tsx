@@ -36,13 +36,13 @@ export const MenuLateral = () => {
                     <FaUserTie /> 
                     <span>Papéis</span>
                 </NavLink>
-                <NavLink
+                {/* <NavLink
                     className="navbar-item"
                     to="/home/dependentes"
                 >
                     <FaUserFriends /> 
                     <span>Dependentes</span>
-                </NavLink>
+                </NavLink> */}
                 
             </ul>
         </Container>

@@ -12,6 +12,7 @@ import { QueryClientProvider } from 'react-query';
 import { queryClient } from './services/queryClient';
 import { Socios } from './pages/Socios';
 import { Papeis } from './pages/Papeis';
+import { Planos } from './pages/Planos';
 
 function App() {
   return (
@@ -24,8 +25,9 @@ function App() {
           <Route path="/private" element={<RequireAuth><Private /></RequireAuth>} />
           <Route path="/home" element={<RequireAuth><Home><Socios /></Home></RequireAuth>} />
           <Route path="/home/socios" element={<RequireAuth><Home><Socios /></Home></RequireAuth>} />
-          <Route path="/home/planos" element={<RequireAuth><Home><Socios /></Home></RequireAuth>} />
+          <Route path="/home/planos" element={<RequireAuth><Home><Planos /></Home></RequireAuth>} />
           <Route path="/home/papeis" element={<RequireAuth><Home><Papeis /></Home></RequireAuth>} />
+          {/* <Route path="/home/dependentes" element={<RequireAuth><Home><Planos /></Home></RequireAuth>} /> */}
           <Route path="/notFound" element={<PageNotFound />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
