@@ -67,6 +67,7 @@ export const SignUp = () => {
                         value={name}
                         placeholder="Nome"
                         onChange={handleNameInput}
+                        id="nome"
                     />
                 </InputArea>
                 <InputArea>
@@ -76,6 +77,7 @@ export const SignUp = () => {
                         value={email}
                         placeholder="E-mail"
                         onChange={handleEmailInput}
+                        id="email"
                     />
                 </InputArea>
                 <InputArea>
@@ -85,6 +87,7 @@ export const SignUp = () => {
                         value={documento}
                         placeholder="Documento"
                         onChange={handleDocumentoInput}
+                        id="documento"
                     />
                 </InputArea>
                 <InputArea>
@@ -94,6 +97,7 @@ export const SignUp = () => {
                         value={login}
                         placeholder="Login"
                         onChange={handleLoginInput}
+                        id="login"
                     />
                 </InputArea>
                 <InputArea>
@@ -103,6 +107,7 @@ export const SignUp = () => {
                         value={password}
                         placeholder="Senha"
                         onChange={handlePasswordInput}
+                        id="senha"
                     />
                 </InputArea>
                 <button onClick={handleSignup}>Cadastrar</button>
