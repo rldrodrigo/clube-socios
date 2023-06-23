@@ -4,6 +4,7 @@ import { AuthContext } from "./AuthContext";
 import { useApi } from "../../hooks/useApi";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import jwtDecode from "jwt-decode";
 
 export const AuthProvider = ({ children }: { children: JSX.Element }) => {
     const [user, setUser] = useState<User | null>(null);
@@ -26,8 +27,14 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
     const signin = async (email: string, password: string) => {
         try {
             const data = await api.signin(email, password);
+            console.log(data);
             if (data.dados) {
                 // setUser(data.user);
+                const user = JSON.stringify(jwtDecode(data.dados));
+                console.log(user);
+                if ( user ) {
+                    sessionStorage.setItem('user', user);
+                }
                 setToken(data.dados);
                 setTokenLocalStorage(data.dados);
                 toast.success("Bem Vindo!");

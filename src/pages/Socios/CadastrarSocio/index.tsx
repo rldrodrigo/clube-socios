@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import {
   ModalContent,
   Title,
@@ -16,6 +16,7 @@ import formatCpfCnpj from "../../../utils/formatCpfCnpj";
 import api from "../../../services/api";
 import { toast } from "react-toastify";
 import { CreateButton, TitleArea } from "../TableSocios/styles";
+import { usePlanos } from "../../../hooks/usePlanos";
 
 interface ModalProps {
   isOpen: boolean;
@@ -41,6 +42,7 @@ export default function CadastrarSocio({ isOpen, onClose, setLoading }: ModalPro
   const [rua, setRua] = useState('');
   const [numero, setNumero] = useState('');
 
+  const { data: planosList, isFetching: isPlanosListFetching, } = usePlanos({});
 
   const handleClickCriarSocio = useCallback(async () => {
     setLoading(true);
@@ -51,13 +53,7 @@ export default function CadastrarSocio({ isOpen, onClose, setLoading }: ModalPro
                 apelido: apelido,
                 diaVencimentoPagamento: parseInt(diaVencimentoPagamento, 10),
                 contato: contato,
-                plano: {
-                  nome: "Plano Basico",
-                  descricao: "Plano Basico",
-                  tipoRecorrencia: "Mensal",
-                  valorMensalidade: 100,
-                  modalidade: "Teste"
-                },
+                idPlano: plano,
                 cliente: {
                     nome: nome,
                     documento: documento,
@@ -82,25 +78,7 @@ export default function CadastrarSocio({ isOpen, onClose, setLoading }: ModalPro
         toast.error(e.response.data.erros[0]);
         setLoading(false);
     }
-  }, [
-    apelido,
-    diaVencimentoPagamento,
-    nome,
-    documento,
-    email,
-    senha,
-    pais,
-    cidade,
-    cep,
-    bairro,
-    rua,
-    numero,
-    contato,
-    login,
-    setLoading,
-    onClose,
-]);
-
+  }, [setLoading, apelido, diaVencimentoPagamento, contato, plano, nome, documento, login, email, senha, pais, cidade, cep, bairro, rua, numero, onClose]);
 
 
   return (
@@ -152,6 +130,12 @@ export default function CadastrarSocio({ isOpen, onClose, setLoading }: ModalPro
               <RowForm>
                   <InputText label={"CEP"} placeholder={"CEP"} value={cep} onChange={(e)=> setCep(e.target.value)}/>
                   <InputText label={"Bairro"} placeholder={"Bairro"} value={bairro} onChange={(e)=> setBairro(e.target.value)}/>
+                  <select name="" id="" value={plano} onChange={e => setPlano(e.target.value)}>
+                    <option value="" selected unselectable="on"> Selecione </option>
+                    { planosList && planosList?.map(item => 
+                      <option value={item.id} > item.nome </option>
+                    )}
+                  </select>
               </RowForm>
           </EnderecoArea>
 

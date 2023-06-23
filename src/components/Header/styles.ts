@@ -22,6 +22,20 @@ export const Container = styled.header`
     }
 `;
 
+export const UserData = styled.div`
+    color: white;
+    font-size: 24px; 
+    margin: 0px 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    span {
+        margin: 0 8px;
+        font-size: 16px;
+    }
+`;
+
 export const MenuUser = styled.div`
     position: absolute;
     width: auto;

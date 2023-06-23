@@ -2,7 +2,7 @@ import { ChangeEvent, useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/Auth/AuthContext";
 import { FaLock, FaUser, FaRegEnvelope, FaUserCircle, FaAddressCard } from "react-icons/fa";
-import { Container, InputArea, LoginForm, WelcomeContainer } from "../Login/styles";
+import { Container, InputArea, LoginForm, WelcomeContainer } from "./styles";
 import { toast } from "react-toastify";
 
 export const SignUp = () => {
