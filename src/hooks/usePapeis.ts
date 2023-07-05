@@ -5,7 +5,6 @@ import api from '../services/api';
 
 async function getListaPapeis(props: any): Promise<any[]> {
   const { data } = await api.get<any>('/papeis', {});
-  console.log(data);
   return data.dados;
 }
 

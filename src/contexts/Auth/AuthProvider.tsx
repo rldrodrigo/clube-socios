@@ -27,11 +27,9 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
     const signin = async (email: string, password: string) => {
         try {
             const data = await api.signin(email, password);
-            console.log(data);
             if (data.dados) {
                 // setUser(data.user);
                 const user = JSON.stringify(jwtDecode(data.dados));
-                console.log(user);
                 if ( user ) {
                     sessionStorage.setItem('user', user);
                 }

@@ -5,7 +5,6 @@ import api from '../services/api';
 
 async function getListaPlanos(props: any): Promise<any[]> {
   const { data } = await api.get<any>('/planos', {});
-  console.log(data);
   return data.dados;
 }
 

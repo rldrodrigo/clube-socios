@@ -66,3 +66,11 @@ export const SendAreaButton = styled.div`
     width: 100%;
     padding-right: 24px;
 `;
+
+export const VeiculosArea = styled.div`
+    padding: 24px;
+`;
+
+export const DependentesArea = styled.div`
+    padding: 24px;
+`;

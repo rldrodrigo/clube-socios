@@ -14,7 +14,7 @@ export const PageNotFound = () => {
     return (
         <Container>
             <WelcomeContainer>
-                <p> Deseja voltar para a tela de login?</p>
+                <p> Deseja voltar para a tela de anterior?</p>
                 <button type="button" onClick={handleNavigateToHome}>Voltar</button>
             </WelcomeContainer>
             <MainContent>

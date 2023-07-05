@@ -1,12 +1,14 @@
 import { useCallback, useState } from "react";
 import { CreateButton, TitleArea } from "../TableSocios/styles";
-import { Card, Container, DadosPessoaisArea, EnderecoArea, PlanoArea, RowForm, SendAreaButton, SwitchInput } from "./styles";
+import { Card, Container, DadosPessoaisArea, DependentesArea, EnderecoArea, PlanoArea, RowForm, SendAreaButton, SwitchInput, VeiculosArea } from "./styles";
 import { InputText } from "../../../components/InputText";
 import { Switch } from "@mui/material";
 import { InputSelect } from "../../../components/InputSelect";
 import api from "../../../services/api";
 import { toast } from "react-toastify";
 import formatCpfCnpj from "../../../utils/formatCpfCnpj";
+import { TableVeiculos } from "../../../components/TableVeiculos";
+import { TableDependentes } from "../../../components/TableDependentes";
 
 
 interface EditarSocioProps {
@@ -40,6 +42,10 @@ export const EditarSocio: React.FC<EditarSocioProps> = ({ socio, setLoading, set
 
     const handleClickVoltar = () => {
         setSocioEditar(undefined);
+    }
+
+    const teste =() => {
+        console.log('teste');
     }
 
     const handleClickSalvar = useCallback(async () => {
@@ -148,6 +154,15 @@ export const EditarSocio: React.FC<EditarSocioProps> = ({ socio, setLoading, set
                         <InputText label={"Bairro"} placeholder={socio.endereco.bairro} value={bairro} onChange={(e)=> setBairro(e.target.value)}/>
                     </RowForm>
                 </EnderecoArea>
+                <VeiculosArea>
+                    <h2>Veículos</h2>
+                    <TableVeiculos setLoading={setLoading} socioId={socio.id} setVeiculoEditar={teste}/>
+                </VeiculosArea>
+
+                <DependentesArea>
+                    <h2>Dependentes</h2>
+                    <TableDependentes setLoading={setLoading} socioId={socio.id} setDependenteEditar={teste} />
+                </DependentesArea>
                 <SendAreaButton>
                     <CreateButton style={{ width: '250px'}} type="button"  onClick={handleClickSalvar}>Salvar</CreateButton>
                 </SendAreaButton>

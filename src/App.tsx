@@ -27,7 +27,6 @@ function App() {
           <Route path="/home/socios" element={<RequireAuth><Home><Socios /></Home></RequireAuth>} />
           <Route path="/home/planos" element={<RequireAuth><Home><Planos /></Home></RequireAuth>} />
           <Route path="/home/papeis" element={<RequireAuth><Home><Papeis /></Home></RequireAuth>} />
-          {/* <Route path="/home/dependentes" element={<RequireAuth><Home><Planos /></Home></RequireAuth>} /> */}
           <Route path="/notFound" element={<PageNotFound />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
