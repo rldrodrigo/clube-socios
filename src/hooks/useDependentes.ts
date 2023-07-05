@@ -4,9 +4,7 @@ import api from '../services/api';
 
 
 async function getListaDependentes(props: any): Promise<any[]> {
-  console.log('props', props);
   const { data } = await api.get<any>(`/socios/${props.id}/dependentes/`, {});
-  console.log(data);
   return data.dados;
 }
 

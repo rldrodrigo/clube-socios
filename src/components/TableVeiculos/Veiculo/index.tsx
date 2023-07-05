@@ -9,10 +9,11 @@ interface PapelProps {
     veiculo: any;
     socioId: any;
     setLoading: (value: boolean) => void;
-    setPapelEditar: (value: any) => void;
+    setVeiculoEditar: (value: any) => void;
+    handleOpenModal: () => void;
   }
 
-export const Veiculo: React.FC<PapelProps> = ({ veiculo, socioId, setLoading, setPapelEditar }) => {
+export const Veiculo: React.FC<PapelProps> = ({ veiculo, socioId, setLoading, setVeiculoEditar, handleOpenModal }) => {
 
     const [status, setStatus] = useState(veiculo.ativo);
 
@@ -39,7 +40,8 @@ export const Veiculo: React.FC<PapelProps> = ({ veiculo, socioId, setLoading, se
       }, [veiculo, setLoading, socioId]);
 
     const handleClickEditar = () => {
-        setPapelEditar(veiculo);
+        setVeiculoEditar(veiculo);
+        handleOpenModal();
     }
 
 

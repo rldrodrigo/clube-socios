@@ -74,3 +74,21 @@ export const VeiculosArea = styled.div`
 export const DependentesArea = styled.div`
     padding: 24px;
 `;
+
+export const SelectContainer = styled.div`
+  display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin: 2px;
+    width: 100%;
+
+  span {
+    color: rgba(28, 28, 28, 0.4);
+    font-size: 12px;
+    margin-left: 20px;
+    position: absolute;
+  }
+`;

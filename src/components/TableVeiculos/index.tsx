@@ -5,23 +5,29 @@ import { useState } from "react";
 import { Veiculo } from "./Veiculo";
 import { LoadingTable } from "../LoadingTable";
 import { useVeiculos } from "../../hooks/useVeiculos";
+import ModalVeiculo from "./ModalVeiculo";
 
 interface TablePapeisProps {
     setLoading: (value: boolean) => void;
     socioId: any;
-    setVeiculoEditar: (value: any) => void;
   }
 
-export const TableVeiculos: React.FC<TablePapeisProps> = ({ setLoading, setVeiculoEditar, socioId }) => {
+export const TableVeiculos: React.FC<TablePapeisProps> = ({ setLoading, socioId }) => {
 
     const { data: papeisList, isFetching: isPapeisListFetching, } = useVeiculos({
         id: socioId,
     });
     const [openModal, setOpenModal] = useState(false);
+    const [veiculoEditar, setVeiculoEditar] = useState(undefined);
     
     const handleCloseModal = () => {
         setOpenModal(false);
     };
+
+    const handleOpenModalCadastro = () => {
+        setVeiculoEditar(undefined);
+        setOpenModal(true);
+    }
 
     const handleOpenModal = () => {
         setOpenModal(true);
@@ -32,7 +38,7 @@ export const TableVeiculos: React.FC<TablePapeisProps> = ({ setLoading, setVeicu
             <Container>
                 <TitleArea>
                     <div></div>
-                    <CreateButton type="button" onClick={handleOpenModal}>Cadastrar Veículo</CreateButton>
+                    <CreateButton type="button" onClick={handleOpenModalCadastro}>Cadastrar Veículo</CreateButton>
                 </TitleArea>
                 <table>
                     <thead>
@@ -44,14 +50,14 @@ export const TableVeiculos: React.FC<TablePapeisProps> = ({ setLoading, setVeicu
                     </thead>
                     <tbody>
                         { !isPapeisListFetching && papeisList ? papeisList.map(item => (
-                            <Veiculo setLoading={setLoading} socioId={socioId} setPapelEditar={setVeiculoEditar} veiculo={item} key={item.id} />
+                            <Veiculo setLoading={setLoading} socioId={socioId} handleOpenModal={handleOpenModal} setVeiculoEditar={setVeiculoEditar} veiculo={item} key={item.id} />
                         )): (
                             <LoadingTable numeroLinhas={4} numeroColunas={3} />
                         )}
                     </tbody>
                 </table>
             </Container>
-            {/* <CadastrarPapel setLoading={setLoading} isOpen={openModal} onClose={handleCloseModal} /> */}
+            <ModalVeiculo setLoading={setLoading} isOpen={openModal} onClose={handleCloseModal} socioId={socioId} veiculo={veiculoEditar}/>
         </>
     );
 }

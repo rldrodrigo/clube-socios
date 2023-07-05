@@ -10,6 +10,7 @@ import {
   SendAreaButton,
   ModalHeader,
   TitleHeader,
+  InputSelectArea,
 } from "./styles";
 import { InputText } from "../../../components/InputText";
 import formatCpfCnpj from "../../../utils/formatCpfCnpj";
@@ -130,12 +131,14 @@ export default function CadastrarSocio({ isOpen, onClose, setLoading }: ModalPro
               <RowForm>
                   <InputText label={"CEP"} placeholder={"CEP"} value={cep} onChange={(e)=> setCep(e.target.value)}/>
                   <InputText label={"Bairro"} placeholder={"Bairro"} value={bairro} onChange={(e)=> setBairro(e.target.value)}/>
-                  <select name="" id="" value={plano} onChange={e => setPlano(e.target.value)}>
-                    <option value="" selected unselectable="on"> Selecione </option>
-                    { planosList && planosList?.map(item => 
-                      <option value={item.id} > item.nome </option>
-                    )}
-                  </select>
+                  <InputSelectArea>
+                    <select name="" id="" value={plano} onChange={e => setPlano(e.target.value)}>
+                      <option value="" selected unselectable="on"> Selecione </option>
+                      { planosList && planosList?.map(item => 
+                        <option value={item.id} > {item.nome} </option>
+                      )}
+                    </select>
+                  </InputSelectArea>
               </RowForm>
           </EnderecoArea>
 

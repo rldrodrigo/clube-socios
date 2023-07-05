@@ -10,9 +10,10 @@ interface PapelProps {
     socioId: any;
     setLoading: (value: boolean) => void;
     setDependenteEditar: (value: any) => void;
+    handleOpenModal: () => void;
   }
 
-export const Dependente: React.FC<PapelProps> = ({ dependente, socioId, setLoading, setDependenteEditar }) => {
+export const Dependente: React.FC<PapelProps> = ({ dependente, socioId, setLoading, setDependenteEditar, handleOpenModal }) => {
 
     const [status, setStatus] = useState(dependente.cliente.ativo);
 
@@ -40,6 +41,7 @@ export const Dependente: React.FC<PapelProps> = ({ dependente, socioId, setLoadi
 
     const handleClickEditar = () => {
         setDependenteEditar(dependente);
+        handleOpenModal();
     }
 
 

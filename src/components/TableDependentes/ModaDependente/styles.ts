@@ -1,12 +1,21 @@
 import styled from "styled-components";
 
+export const Content = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+`
+
 export const ModalContent = styled.div`
   border: none;
   border-radius: 0.5rem;
   box-shadow: 0 0 1em;
   width: 80%;
   position: fixed;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: #fff;
@@ -39,11 +48,6 @@ export const Input = styled.input`
   margin-bottom: 10px;
 `;
 
-export const Select = styled.select`
-  padding: 5px;
-  margin-bottom: 10px;
-`;
-
 export const Button = styled.button`
   padding: 10px 20px;
   background-color: #1c1c1c;
@@ -51,6 +55,12 @@ export const Button = styled.button`
   border: none;
   border-radius: 8px;
   cursor: pointer;
+
+  &:hover {
+    background-color: #fff;
+    color: #1c1c1c;
+    border: 1px #1c1c1c solid;
+  }
 `;
 
 
@@ -65,15 +75,7 @@ export const RowForm = styled.div`
     }
 `;
 
-export const DadosPessoaisArea = styled.div`
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-  padding: 24px;
-  width: 100%;
-`;
-
-export const EnderecoArea = styled.div`
+export const DadosDependente = styled.div`
   display: flex;
   align-items: flex-start;
   flex-direction: column;
@@ -106,24 +108,3 @@ export const TitleHeader = styled.div`
   align-items: flex-start;
   flex-direction: column;
 `
-export const InputSelectArea = styled.div`
-  width: 100%;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 15px;
-  select {
-    width: 100%;
-    height: 50px;
-    padding: 0 20px;
-    border: none;
-
-    :focus {
-        box-shadow: 0 0 0 0;
-        outline: 0;
-    }
-
-    option {
-      font-size: 20px;
-      border-radius: 0;
-    }
-  }
-`;

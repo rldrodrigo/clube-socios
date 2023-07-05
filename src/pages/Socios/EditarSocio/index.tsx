@@ -1,6 +1,6 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { CreateButton, TitleArea } from "../TableSocios/styles";
-import { Card, Container, DadosPessoaisArea, DependentesArea, EnderecoArea, PlanoArea, RowForm, SendAreaButton, SwitchInput, VeiculosArea } from "./styles";
+import { Card, Container, DadosPessoaisArea, DependentesArea, EnderecoArea, PlanoArea, RowForm, SelectContainer, SendAreaButton, SwitchInput, VeiculosArea } from "./styles";
 import { InputText } from "../../../components/InputText";
 import { Switch } from "@mui/material";
 import { InputSelect } from "../../../components/InputSelect";
@@ -9,6 +9,8 @@ import { toast } from "react-toastify";
 import formatCpfCnpj from "../../../utils/formatCpfCnpj";
 import { TableVeiculos } from "../../../components/TableVeiculos";
 import { TableDependentes } from "../../../components/TableDependentes";
+import { usePlanos } from "../../../hooks/usePlanos";
+import { InputSelectArea } from "../../../components/InputSelect/styles";
 
 
 interface EditarSocioProps {
@@ -20,6 +22,7 @@ interface EditarSocioProps {
 export const EditarSocio: React.FC<EditarSocioProps> = ({ socio, setLoading, setSocioEditar }) => {
     const [apelido, setApelido] = useState('');
     const [diaVencimentoPagamento, setDiaVencimentoPagamento] = useState('');
+    const { data: planosList, isFetching: isPlanosListFetching, } = usePlanos({});
     
     const [plano, setPlano] = useState('');
 
@@ -42,10 +45,6 @@ export const EditarSocio: React.FC<EditarSocioProps> = ({ socio, setLoading, set
 
     const handleClickVoltar = () => {
         setSocioEditar(undefined);
-    }
-
-    const teste =() => {
-        console.log('teste');
     }
 
     const handleClickSalvar = useCallback(async () => {
@@ -136,8 +135,18 @@ export const EditarSocio: React.FC<EditarSocioProps> = ({ socio, setLoading, set
                 </DadosPessoaisArea>
                 <PlanoArea>
                     <h2>Plano</h2>
-                    {/* //<InputText label={"Selecione o Plano"} placeholder={socio.plano.nome} value={plano} onChange={(e)=> setPlano(e.target.value)}/> */}
-                    <InputSelect label="Selecione o Plano" options={[{value: '1', label: 'teste'}]}/>
+                    <SelectContainer>
+                        <span>Selecione o Plano</span>
+                        <InputSelectArea>    
+                            <select name="plano" id="plano" value={plano} onChange={(e) => setPlano(e.target.value)}>
+                                <option value="" disabled> Selecione</option>
+                                {
+                                !isPlanosListFetching && planosList?.map((item: any) => 
+                                            <option value={item.nome}> {item.nome}</option>)
+                                }
+                            </select>
+                        </InputSelectArea>
+                    </SelectContainer>
                 </PlanoArea>
                 <EnderecoArea>
                     <h2>Endereço</h2>
@@ -156,12 +165,12 @@ export const EditarSocio: React.FC<EditarSocioProps> = ({ socio, setLoading, set
                 </EnderecoArea>
                 <VeiculosArea>
                     <h2>Veículos</h2>
-                    <TableVeiculos setLoading={setLoading} socioId={socio.id} setVeiculoEditar={teste}/>
+                    <TableVeiculos setLoading={setLoading} socioId={socio.id} />
                 </VeiculosArea>
 
                 <DependentesArea>
                     <h2>Dependentes</h2>
-                    <TableDependentes setLoading={setLoading} socioId={socio.id} setDependenteEditar={teste} />
+                    <TableDependentes setLoading={setLoading} socioId={socio.id} />
                 </DependentesArea>
                 <SendAreaButton>
                     <CreateButton style={{ width: '250px'}} type="button"  onClick={handleClickSalvar}>Salvar</CreateButton>
