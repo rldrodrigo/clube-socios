@@ -49,11 +49,13 @@ export const TableDependentes: React.FC<TablePapeisProps> = ({ setLoading, socio
                         </tr>
                     </thead>
                     <tbody>
-                        { !isPapeisListFetching && papeisList ? papeisList.map(item => (
-                            <Dependente setLoading={setLoading} socioId={socioId} handleOpenModal={handleOpenModal} setDependenteEditar={setDependenteEditar} dependente={item} key={item.id} />
-                        )): (
+                        { isPapeisListFetching ? (
                             <LoadingTable numeroLinhas={4} numeroColunas={3} />
-                        )}
+                        ) : <> {
+                            papeisList ? papeisList?.map(item => (
+                                <Dependente setLoading={setLoading} socioId={socioId} handleOpenModal={handleOpenModal} setDependenteEditar={setDependenteEditar} dependente={item} key={item.id} />
+                            )) : <td colSpan={3}>Nenhum Registro Encontrado</td>
+                        }</>}
                     </tbody>
                 </table>
             </Container>

@@ -42,7 +42,7 @@ export const TablePapeis: React.FC<TablePapeisProps> = ({ setLoading, setPapelEd
                         { !isPapeisListFetching && papeisList ? papeisList.map(item => (
                             <Papel setLoading={setLoading} setPapelEditar={setPapelEditar} papel={item} key={item.id} />
                         )): (
-                            <LoadingTable numeroLinhas={7} numeroColunas={4} />
+                            <LoadingTable numeroLinhas={7} numeroColunas={3} />
                         )}
                     </tbody>
                 </table>

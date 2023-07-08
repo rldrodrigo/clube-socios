@@ -46,7 +46,7 @@ export const TablePlanos: React.FC<TablePlanosProps> = ({ setLoading, setPlanoEd
                         { !isPlanosListFetching && planosList ? planosList.map(item => (
                             <Plano setLoading={setLoading} setPlanoEditar={setPlanoEditar} plano={item} key={item.id} />
                         )): (
-                            <LoadingTable numeroLinhas={7} numeroColunas={4} />
+                            <LoadingTable numeroLinhas={7} numeroColunas={7} />
                         )}
                     </tbody>
                 </table>

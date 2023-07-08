@@ -49,11 +49,15 @@ export const TableVeiculos: React.FC<TablePapeisProps> = ({ setLoading, socioId 
                         </tr>
                     </thead>
                     <tbody>
-                        { !isPapeisListFetching && papeisList ? papeisList.map(item => (
-                            <Veiculo setLoading={setLoading} socioId={socioId} handleOpenModal={handleOpenModal} setVeiculoEditar={setVeiculoEditar} veiculo={item} key={item.id} />
-                        )): (
+                        { isPapeisListFetching ? (
                             <LoadingTable numeroLinhas={4} numeroColunas={3} />
-                        )}
+                        ) : <>
+                            {
+                                papeisList ? papeisList.map(item => (
+                                    <Veiculo setLoading={setLoading} socioId={socioId} handleOpenModal={handleOpenModal} setVeiculoEditar={setVeiculoEditar} veiculo={item} key={item.id} />
+                                )) : <td colSpan={3}>Nenhum Registro Encontrado</td>
+                            }
+                        </>}
                     </tbody>
                 </table>
             </Container>
